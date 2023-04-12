@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:m="clr-namespace:Arthouse_MAUI.Models"
+             x:Class="Arthouse_MAUI.ArtworkDetailsPage"
+             Title="Artwork Details">
+
+    <ScrollView x:Name="ArtworkScrollView" Orientation="Vertical" VerticalOptions="FillAndExpand" >
+        <StackLayout Orientation="Vertical"  VerticalOptions="Start" HorizontalOptions="FillAndExpand" >
+            <Grid Padding="10" ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto"
+                    RowSpacing="10" Margin="20,0,20,0"
+                    ColumnSpacing="10" >
+                <Label Text="Artwork Name:" VerticalOptions="Center" />
+                <Entry x:Name="txtName" Text="{Binding Name}" Grid.Column="1"  />
+
+                <Label Text="Completed:" Grid.Row="1" VerticalOptions="Center" />
+                <DatePicker x:Name="daCompleted" Date="{Binding Completed}" 
+                        Grid.Row="1" Grid.Column="1" HorizontalOptions="Start"
+                        WidthRequest="200"/>
+
+                <Label Text="Value:" Grid.Row="2" VerticalOptions="Center" />
+                <Entry x:Name="txtValue" Text="{Binding Value}" Grid.Row="2" Grid.Column="1" />
+
+                <Label Text="Art Type:" Grid.Row="3" VerticalOptions="Center" />
+                <Picker x:Name="ddlArtTypes"   
+                    ItemDisplayBinding="{Binding Type}" 
+                    Grid.Row="3" 
+                    Grid.Column="1" 
+                    WidthRequest="200"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start">
+                </Picker>
+            </Grid>
+            <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Orientation="Vertical" 
+                         Margin="20,5,20,5" Padding="15,10,15,10">
+                <Label Text="Description:" VerticalOptions="Center" HorizontalOptions="Start" />
+                <Editor x:Name="edtDescription" Text="{Binding Description}" 
+                    AutoSize="TextChanges" />
+
+                <StackLayout Orientation="Vertical" >
+                    <Button Text="Save" Clicked="SaveClicked" Margin="5,20,5,5" />
+                    <Button Text="Cancel" Clicked="CancelClicked" Margin="5,5,5,5" />
+                    <Button x:Name="btnDelete" Text="Delete" Clicked="DeleteClicked" Margin="5,5,5,5" />
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+    
+</ContentPage>
